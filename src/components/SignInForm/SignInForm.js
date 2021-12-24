@@ -10,7 +10,6 @@ import {
     InputContainer,
     Img
 } from './SignInForm.styled'
-import axios from 'axios'
 
 import hidePassword from '../../assets/images/hidepassword.png';
 import showPassword from '../../assets/images/showpassword.png';
