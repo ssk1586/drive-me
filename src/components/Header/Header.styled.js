@@ -38,3 +38,9 @@ export const Line = styled.hr`
     color: red; 
     height: 2px;
 `;
+
+export const Button = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+`;

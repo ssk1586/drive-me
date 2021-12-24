@@ -15,6 +15,6 @@ function Users() {
       {/* <ClientsTable clients={clients} /> */}
     </>
   )
-}
+} 
 
 export default Users

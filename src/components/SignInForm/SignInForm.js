@@ -1,4 +1,6 @@
-import React, {useCallback, useState} from 'react'
+import React, { useCallback, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import {
     Component,
     Input,
@@ -12,30 +14,31 @@ import axios from 'axios'
 
 import hidePassword from '../../assets/images/hidepassword.png';
 import showPassword from '../../assets/images/showpassword.png';
+import { userLogin } from '../../services/userService';
 
 
 function SignInForm() {
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
+  const [values, setValues] = useState({email: '', pass: ''});
   const [clicked, setClick] = useState(false)  
 
-  const PushToLocalStorage = (data) => {
-    localStorage.setItem('result', JSON.stringify(data));
-  }
-
-  const OnButtonClick = useCallback(async () => {
-    if (!email || !pass) {
+  const handleUserLogin = useCallback(async () => {
+    if (!values) {
       return alert("Заповніть пусті поля");
     }
-    await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
-      "email": email,
-      "password": pass
-    }).then(res => {
-      PushToLocalStorage(res.data)
+    userLogin(values)
+    .then(data => {
+      localStorage.setItem('user', JSON.stringify(data));
+      navigate('/')
     });     
-    }, [email, pass])
+    }, [values, navigate])
 
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value })
+  };
+  
   return (
     <Component>
       <Logo>MAGNET</Logo>
@@ -43,23 +46,25 @@ function SignInForm() {
       <Inputs>
         <Input
           type='email'
+          name='email'
           placeholder='email'
-          value={email || ''}
-          onChange={(e) => { setEmail(e.target.value) }}
+          value={values.email || ''}
+          onChange={(e) => onChange(e)}
         />
         <InputContainer>
           <Img src={clicked ? hidePassword : showPassword} alt='title' onClick={() => setClick(!clicked)} />
           <Input
             type={clicked ? "password" : "text"}
+            name='pass'
             placeholder='пароль'
-            value={pass || ''}
-            onChange={(e) => { setPass(e.target.value) }}
+            value={values.pass || ''}
+            onChange={(e) => onChange(e)}
           />
         </InputContainer>
       </Inputs>
       <p>Забули пароль?</p>
       <Button
-        onClick={() => OnButtonClick()}
+        onClick={() => handleUserLogin()}
       >Ввійти</Button>
     </Component>
   )

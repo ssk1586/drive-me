@@ -1,14 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-function PublicRoute({ children }) {
+function PrivateRoute({ children }) {
   const isUserAuth = localStorage.getItem('user');
 
   return isUserAuth
-    ? <Navigate to="/" replace />
-    : children;
+    ? children
+    : <Navigate to="/signIn" replace />;
 }
 
-export default PublicRoute;
-
-  
+export default PrivateRoute;
