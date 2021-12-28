@@ -14,6 +14,9 @@ import {
 function Header() {
 	const navigate = useNavigate();
 
+	const data = JSON.parse(localStorage.getItem('user'))
+	const user = data.user
+	
 	const logOut = () => {
 		localStorage.clear();
 		navigate('/signIn')
@@ -24,7 +27,7 @@ function Header() {
 			<HeaderComponent>
 				<Logo>MAGNET</Logo>
 				<User>
-					<Name>Sasha Sasha</Name>
+					<Name>{user.role}</Name>
 					<Button onClick={() => logOut()}>Log out</Button>
 				</User>
 			</HeaderComponent>
