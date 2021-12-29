@@ -10,15 +10,18 @@ import {
 	Button,
 
 } from './Header.styled'
+import Cookies from 'js-cookie';
+
 
 function Header() {
 	const navigate = useNavigate();
 
-	const data = JSON.parse(localStorage.getItem('user'))
-	const user = data.user
+	const data = Cookies.get('user')
 	
 	const logOut = () => {
-		localStorage.clear();
+		Cookies.remove('user');
+		Cookies.remove('accessToken');
+		Cookies.remove('refreshToken');
 		navigate('/signIn')
 	};
 
@@ -27,7 +30,7 @@ function Header() {
 			<HeaderComponent>
 				<Logo>MAGNET</Logo>
 				<User>
-					<Name>{user.role}</Name>
+					<Name>{data.role}</Name>
 					<Button onClick={() => logOut()}>Log out</Button>
 				</User>
 			</HeaderComponent>

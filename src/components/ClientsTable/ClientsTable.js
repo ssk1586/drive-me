@@ -5,28 +5,29 @@ import {
   TR,
   TH,
   TD,
+  ContentComponent,
 } from './ClientsTable.styled.js';
 
 import deleteIcon from '../../assets/images/deleteIcon.png';
 import active from '../../assets/images/active.png';
 import blocked from '../../assets/images/blocked.png';
+import Arrows from '../shared/Arrows/Arrows.js';
 
-
-export const ClientsTable = ({ clients, removeUser }) => {
+export const ClientsTable = ({ clients, removeUser, sortUsers }) => {
 
     return (
       <ClientItem>       
         <Table>
           <thead>
-          <TR>
-            <TH>П.І.Б.</TH>
-            <TH>Email</TH>
-            <TH>Телефон</TH>
-            <TH>Відгуки</TH>
-            <TH>Стутус</TH>
-            <TH>Опції</TH>
+            <TR>
+              <TH><ContentComponent>П.І.Б. <Arrows sortUsers={sortUsers} name='name'/></ContentComponent></TH> 
+              <TH><ContentComponent>Email <Arrows sortUsers={sortUsers} name='email'/></ContentComponent></TH> 
+              <TH>Телефон</TH>
+              <TH>Відгуки</TH>
+              <TH>Стутус</TH>
+              <TH>Опції</TH>
             </TR>
-            </thead>
+          </thead>
 
           <tbody>
             {

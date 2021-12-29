@@ -41,3 +41,9 @@ export const TD = styled.td`
     border-right: 0;
   }  
 `;
+
+export const ContentComponent = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+`;
