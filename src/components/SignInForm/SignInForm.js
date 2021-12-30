@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
-import { useCookies } from 'react-cookie';
-
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie';
 
 import {
     Component,
@@ -16,14 +15,14 @@ import {
 import hidePassword from '../../assets/images/hidepassword.png';
 import showPassword from '../../assets/images/showpassword.png';
 import { userLogin } from '../../services/userService';
-import Cookies from 'js-cookie';
+
+
 
 function SignInForm() {
   const navigate = useNavigate();
 
   const [values, setValues] = useState({email: '', pass: ''});
   const [clicked, setClick] = useState(false)  
-  const [cookies, setCookie] = useCookies(['user']);
 
   const handleUserLogin = useCallback(async () => {
     if (!values) {

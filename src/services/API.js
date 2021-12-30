@@ -34,3 +34,14 @@ export async function fetchSort(sortType) {
   );
   return await responce.data
 } 
+
+export async function fetchNewAdmin(values) {
+  const responce = await axios.post(`${process.env.REACT_APP_BASE_URL}/users`,
+  {
+    email: values.email, password: values.pass, name:  values.name, surname:  values.surname
+  },
+  config,
+
+  );
+  return await responce.data
+}

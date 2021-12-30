@@ -1,9 +1,5 @@
 import styled from "styled-components/macro";
 
-export const Content = styled.div`
-   
-`;
-
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -24,9 +20,6 @@ export const InputComponent = styled.div`
   gap: 30px;
 `;
 
-export const ButtonComponent = styled.div`
-
-`;
 
 export const PageComponent = styled.div`
   padding: 0px 50px;
