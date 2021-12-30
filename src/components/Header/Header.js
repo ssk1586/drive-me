@@ -2,12 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { setPopup } from '../../redux/slices/PopupSlice/PopupSlice'
+import { isAdmin } from '../../services/userService';
 
 import {
   HeaderComponent,
 	Logo,
 	User,
-	// Name,
+	Name,
 	Line,
 	Button,
 	HeaderSection,
@@ -17,12 +18,13 @@ import {
 import Cookies from 'js-cookie';
 
 
+
 function Header() {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	// const data = Cookies.get('user')
+	const data = JSON.parse(Cookies.get('user'))
 	
 	const logOut = () => {
 		Cookies.remove('user');
@@ -40,13 +42,16 @@ function Header() {
 			<HeaderComponent>
 				<HeaderSection>
 				<Logo>MAGNET</Logo>
-				<User>
+					<User>
+						<Name>{data.user.role}</Name>
 					<Button onClick={() => logOut()}>Log out</Button>
 				</User>
 				</HeaderSection>
 
 				<ButtonSection>
-					<AddAdminButton onClick={() => handlePopup()}>+ Додати адміна</AddAdminButton>
+					{isAdmin && <AddAdminButton
+						onClick={() => handlePopup()}
+					>+ Додати адміна</AddAdminButton>}
 				</ButtonSection>
 			</HeaderComponent>
 			<Line />

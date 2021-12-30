@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { isAdmin } from '../../services/userService';
 import { Tabs, useTabState, usePanelState } from "@bumaga/tabs";
 import {
   CategoryComponent,
@@ -29,7 +29,7 @@ const UserCategory = () =>  {
 	return (
 		<Tabs>
 			<CategoryComponent>
-				<div><Tab>Адміністатори</Tab></div>
+				{isAdmin && <div><Tab>Адміністатори</Tab></div>}
 				<TabShift><Tab>Водії</Tab></TabShift>
 				<TabShift><Tab>Клієнти</Tab></TabShift>
 			</CategoryComponent>
