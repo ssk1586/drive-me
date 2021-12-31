@@ -22,7 +22,10 @@ export const InputComponent = styled.div`
 
 
 export const PageComponent = styled.div`
-  padding: 0px 50px;
+  display: flex;
+  flex-direction: column;
+  /* padding: 0px 50px; */
+  /* width: 100%; */
 `;
 
 export const Multiselect = styled.select`
@@ -39,4 +42,10 @@ export const Button = styled.button`
 	&:hover {
 		color: red;
 	}
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 `;

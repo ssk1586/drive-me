@@ -16,14 +16,12 @@ export const Table = styled.table`
 `;
 
 export const TR = styled.tr`
-
 `;
 
 export const TH = styled.th`
   padding: 10px;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
-
   &:last-child {
     border-right: 0;
   }
@@ -36,7 +34,6 @@ export const TD = styled.td`
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   cursor: pointer;
-
   &:last-child {
     border-right: 0;
   }  

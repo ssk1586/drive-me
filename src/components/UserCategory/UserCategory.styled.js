@@ -19,3 +19,12 @@ export const Category = styled.button`
 export const TabShift = styled.div`
 	margin-left: -70px;
 `;
+
+export const Content = styled.div`
+	margin: auto;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	
+	/* align-items: center; */
+`;

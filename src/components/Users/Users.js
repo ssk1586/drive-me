@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import {ClientsTable} from '../ClientsTable/ClientsTable'
 import { fetchUsers, fetchStatus, deleteUser, fetchSort} from '../../services/API'
 import Pagination from '../Pagination/Pagination';
-import AddAdminPopUp from '../shared/AddAdminPopUp/AddAdminPopUp';
 
 import {
   Header,
@@ -10,6 +9,7 @@ import {
   InputComponent,
   PageComponent,
   Multiselect, 
+  Overlay,
 } from './User.styled.js'
 
 
@@ -94,7 +94,7 @@ function Users() {
       </Header>
 
       <div>
-        {clientsData?.rows?
+        {clientsData?.rows ?
           <ClientsTable
             clients={clientsData.rows}
             removeUser={removeUser}
@@ -103,7 +103,7 @@ function Users() {
           : "no result("}
       </div>
     </PageComponent>
-  )
-} 
+  );
+};
 
 export default Users

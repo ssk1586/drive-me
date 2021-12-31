@@ -16,6 +16,7 @@ import {
 	AddAdminButton,
 } from './Header.styled'
 import Cookies from 'js-cookie';
+import { deleteCookies } from '../../services/userService';
 
 
 
@@ -23,13 +24,10 @@ function Header() {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-
 	const data = JSON.parse(Cookies.get('user'))
 	
 	const logOut = () => {
-		Cookies.remove('user');
-		Cookies.remove('accessToken');
-		Cookies.remove('refreshToken');
+		deleteCookies();
 		navigate('/signIn')
 	};
 

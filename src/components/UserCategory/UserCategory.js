@@ -5,6 +5,8 @@ import {
   CategoryComponent,
 	Category,
 	TabShift,
+	Content,
+	Over,
 } from './UserCategory.styled'
 import Users from '../Users/Users';
 
@@ -28,15 +30,17 @@ const UserCategory = () =>  {
 
 	return (
 		<Tabs>
-			<CategoryComponent>
-				{isAdmin && <div><Tab>Адміністатори</Tab></div>}
-				<TabShift><Tab>Водії</Tab></TabShift>
-				<TabShift><Tab>Клієнти</Tab></TabShift>
-			</CategoryComponent>
+			<Content>
+				<CategoryComponent>
+					{isAdmin && <div><Tab>Адміністатори</Tab></div>}
+					<TabShift><Tab>Водії</Tab></TabShift>
+					<TabShift><Tab>Клієнти</Tab></TabShift>
+				</CategoryComponent>
 
-			<Panel>Panel 1</Panel>
-			<Panel>Panel 2</Panel>
-			<Panel><Users /></Panel>
+				<Panel>Panel 1</Panel>
+				<Panel>Panel 2</Panel>
+				<Panel><Users /></Panel>
+			</Content>	
 		</Tabs>
 	);
 };
