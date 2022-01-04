@@ -6,9 +6,9 @@ import {
 	Category,
 	TabShift,
 	Content,
-	Over,
 } from './UserCategory.styled'
 import Users from '../Users/Users';
+import Admins from '../Admins/Admins';
 
 
 
@@ -37,9 +37,9 @@ const UserCategory = () =>  {
 					<TabShift><Tab>Клієнти</Tab></TabShift>
 				</CategoryComponent>
 
-				<Panel>Panel 1</Panel>
-				<Panel>Panel 2</Panel>
-				<Panel><Users /></Panel>
+				<Panel><Admins/></Panel>
+				<Panel><Users mode='driver'/></Panel>
+				<Panel><Users mode='passenger'/></Panel>
 			</Content>	
 		</Tabs>
 	);

@@ -10,6 +10,7 @@ import { Tabs, useTabState, usePanelState } from "@bumaga/tabs";
 import UserCategory from '../UserCategory/UserCategory';
 
 const SideBarMenu = () => {
+  
   const Tab = ({ children }) => {
 		const { onClick, isActive } = useTabState();  
 		return <SideBarButton

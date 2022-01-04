@@ -8,13 +8,13 @@ const config = {
   headers: { Authorization: `Bearer ${USER_DATA?.accessToken}` }
 };
 
-export async function fetchUsers(page = 1, searchTerm, userLimit) {
-  const responce = await axiosConfig.get(`/users?role=user&mode=passenger&page=${page}&query=${searchTerm}&limit=${userLimit}`);
+export async function fetchUsers(page = 1, searchTerm, userLimit, mode, role) {
+  const responce = await axiosConfig.get(`/users?role=${role}&mode=${mode}&page=${page}&query=${searchTerm}&limit=${userLimit}`);
   return responce;
 };
 
-export async function fetchStatus(status) {
-  const responce = await axiosConfig.get(`/users?role=user&mode=passenger&banned=${status}`)
+export async function fetchStatus(status, mode) {
+  const responce = await axiosConfig.get(`/users?role=user&mode=${mode}&banned=${status}`)
   return responce;
 };
 
@@ -25,8 +25,8 @@ export async function deleteUser(id) {
   return await responce.data
 };
 
-export async function fetchSort(sortType) {
-  const responce = await axiosConfig.get(`/users?sort=${sortType}&role=user&mode=passenger&page=2&query=&limit=15`);
+export async function fetchSort(sortType, mode) {
+  const responce = await axiosConfig.get(`/users?sort=${sortType}&role=user&mode=${mode}&page=1&query=&limit=15`);
   return  responce
 };
 
@@ -38,4 +38,14 @@ export async function fetchNewAdmin(values) {
   config,
   );
   return await responce.data
+};
+
+export async function fetchAdmins(page = 1, searchTerm, userLimit, role) {
+  const responce = await axiosConfig.get(`/users?role=${role}&page=${page}&query=${searchTerm}&limit=${userLimit}`);
+  return responce;
+};
+
+export async function fetchSortAdmins(sortType) {
+  const responce = await axiosConfig.get(`/users?sort=${sortType}&role=moderator&page=1&query=&limit=15`);
+  return  responce
 };

@@ -9,12 +9,11 @@ import {
   InputComponent,
   PageComponent,
   Multiselect, 
-  Overlay,
 } from './User.styled.js'
 
 
 
-function Users() {
+function Users({mode}) {
   const [clientsData, setClientsData] = useState([])
   const [searchTerm, setSearchTerm] = useState('');
   const [userLimit] = useState(15)
@@ -27,7 +26,7 @@ function Users() {
   }
 
   useEffect(() => {
-    fetchUsers(page, searchTerm, userLimit)
+    fetchUsers(page, searchTerm, userLimit, mode, 'user')
       .then(data => {
         setClientsData(data)
         setpageCount(Math.ceil(clientsData.count / userLimit))
@@ -35,7 +34,7 @@ function Users() {
   }, [page, searchTerm])
 
   const sortUsers = (sortType) => {
-    fetchSort(sortType)
+    fetchSort(sortType, mode)
     .then(data => setClientsData(data))
   }
 
@@ -57,10 +56,10 @@ function Users() {
 
   const handleStatusChange = (status) => {
     if (status == 'all') {
-      fetchUsers(page, searchTerm)
+      fetchUsers(page, searchTerm, userLimit, mode, 'user')
         .then(data => setClientsData(data))
     } else {
-      fetchStatus(status)
+      fetchStatus(status, mode)
         .then(data => setClientsData(data))
     };
   };
@@ -99,6 +98,7 @@ function Users() {
             clients={clientsData.rows}
             removeUser={removeUser}
             sortUsers={sortUsers}
+            mode={mode}
           />
           : "no result("}
       </div>
