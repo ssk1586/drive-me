@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import axiosConfig from '../utils/Axios';
 
-const USER_DATA = Cookies.get('user') && JSON.parse(Cookies.get('user'))
+export const USER_DATA = Cookies.get('user') && JSON.parse(Cookies.get('user'))
 
 const config = {
   headers: { Authorization: `Bearer ${USER_DATA?.accessToken}` }
@@ -47,5 +47,10 @@ export async function fetchAdmins(page = 1, searchTerm, userLimit, role) {
 
 export async function fetchSortAdmins(sortType) {
   const responce = await axiosConfig.get(`/users?sort=${sortType}&role=moderator&page=1&query=&limit=15`);
+  return  responce
+};
+
+export async function fetchDriverLicense(id) {
+  const responce = await axiosConfig.get(`/users/${id}?images=drivingLicense,registrationCertificate`);
   return  responce
 };

@@ -4,10 +4,11 @@ import {
   MenuComponent,
   Content,
   SideBarButton,
+  LinkTab,
 } from './SideBarMenu.styled.js';
 
 import { Tabs, useTabState, usePanelState } from "@bumaga/tabs";
-import UserCategory from '../UserCategory/UserCategory';
+import { Link } from 'react-router-dom';
 
 const SideBarMenu = () => {
   
@@ -25,24 +26,23 @@ const SideBarMenu = () => {
   return isActive ? <>{children}</> : null;
   };
 
-	return (
-		<Tabs>
-			<MenuComponent>
-				<MenuItems>
-					<Tab>Користувачі</Tab>
-					<Tab>Зворотній зв'язок</Tab>
-          <Tab>Фінансові запити</Tab>
-          <Tab>Налаштування</Tab>
-        </MenuItems>
-        <Content>
-          <Panel><UserCategory/></Panel>
-          <Panel>Panel 2</Panel>
-          <Panel>Panel 3</Panel>
-          <Panel>Panel 4</Panel>
-        </Content>
-			</MenuComponent>	
-		</Tabs>
-	);
+  return (
+    <Tabs>
+      {/* <MenuComponent> */}
+      <MenuItems>
+        <Tab><LinkTab to='/'>Користувачі</LinkTab></Tab>
+        <Tab><LinkTab to='/'>Зворотній</LinkTab></Tab>
+        <Tab><LinkTab to='/'>Фінансові запити</LinkTab></Tab>
+        <Tab><LinkTab to='/'>Налаштування</LinkTab></Tab>
+      </MenuItems>
+      
+      <Panel></Panel>
+      <Panel></Panel>
+      <Panel></Panel>
+      <Panel></Panel>
+      {/* </MenuComponent>	 */}
+    </Tabs>
+  );
 };
 
 export default SideBarMenu;

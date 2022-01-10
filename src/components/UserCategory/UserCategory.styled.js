@@ -9,7 +9,9 @@ export const CategoryComponent = styled.div`
 
 export const Category = styled.button`
 	cursor: pointer;
-	padding: 10px 150px;
+	padding: 10px;
+	width: 250px;
+	max-width: 100%;
 	border-radius: 20px;
 	border: 2px solid red;
 	color: ${(props) => (props.text)};
@@ -17,14 +19,12 @@ export const Category = styled.button`
 `;
 
 export const TabShift = styled.div`
-	margin-left: -70px;
+	margin-left: -50px;
 `;
 
 export const Content = styled.div`
-	margin: auto;
+	/* margin: auto; */
 	width: 80%;
 	display: flex;
 	flex-direction: column;
-	
-	/* align-items: center; */
 `;

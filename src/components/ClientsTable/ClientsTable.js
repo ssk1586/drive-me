@@ -12,8 +12,21 @@ import deleteIcon from '../../assets/images/deleteIcon.png';
 import active from '../../assets/images/active.png';
 import blocked from '../../assets/images/blocked.png';
 import Arrows from '../shared/Arrows/Arrows.js';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { addUser } from '../../redux/slices/SelectedUserSlice/SelectedUser';
+import { fetchDriverLicense } from '../../services/API.js';
 
-export const ClientsTable = ({ clients, removeUser, sortUsers, mode}) => {
+export const ClientsTable = ({ clients, removeUser, sortUsers, mode }) => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleUserRedirect = (item) => {
+    fetchDriverLicense(item.id).then(data => dispatch(addUser(data)))
+		navigate(`/aboutUser/${item.id}`)
+	};
+
     return (
       <ClientItem>       
         <Table>
@@ -30,9 +43,10 @@ export const ClientsTable = ({ clients, removeUser, sortUsers, mode}) => {
           </thead>
           <tbody>
             {
-              clients.map(({ id, name, surname, phone, rating, banned, email, vehicle }) => {
+              clients.map((item) => {
+                const { id, name, surname, phone, rating, banned, email, vehicle } = item
                 return (
-                  <TR key={id}>
+                  <TR key={id} onClick={() => handleUserRedirect(item)}>
                     <TD>{name ? name : 'no name'} {surname}</TD>
                     <TD>{email ? email : 'no email'}</TD>
                     <TD>{phone ? phone : 'no phone'}</TD>

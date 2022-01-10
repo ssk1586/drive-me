@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
 export const MenuItems = styled.div`
@@ -13,14 +14,16 @@ export const MenuComponent = styled.div`
   width: 100%;
   display: flex;
   justify-content: start;
+  gap: 50px;
 `;
 
 export const Content = styled.div`
   width: 100%;
 `;
 
-export const Item = styled.div`
-  
+export const LinkTab = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;
 
 export const SideBarButton = styled.button`
@@ -31,3 +34,4 @@ export const SideBarButton = styled.button`
   font-size: 16px;
   border-radius: 15px 0px 0px 15px;
 `;
+

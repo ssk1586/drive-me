@@ -7,9 +7,11 @@ import {
 } from "react-router-dom";
   
 import Home from '../pages/Home';
+import AboutUser from '../pages/AboutUser';
 import SignIn from '../pages/SignIn';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute'; 
+
 
 function Routes() {
   return (
@@ -24,7 +26,6 @@ function Routes() {
               </PublicRoute>
             }
           />
-
           <Route
             path="/"
             element={
@@ -33,7 +34,14 @@ function Routes() {
               </PrivateRoute>
             }
           />
-
+          <Route
+            path="/aboutUser/:id"
+            element={
+              <PrivateRoute>
+                <AboutUser/>
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/error"
             element={
