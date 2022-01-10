@@ -10,11 +10,12 @@ import {
 } from './UserInformation.styled';
 import { useSelector } from 'react-redux'
 import { getSelectedUser } from '../../redux/slices/SelectedUserSlice/SelectedUser';
-
+import { getData } from '../../utils/getDate';
 
 export const UserInformation = () => {
 
   const driver = useSelector(getSelectedUser);
+
 
   const listContent = driver.map(({ id, name, surname, email, phone, birthDate, sex, feedbackCount, rating, createdAt, vehicle, mode, pricePerKilogram, pricePerKilometer, images}) => {
 
@@ -28,10 +29,10 @@ export const UserInformation = () => {
             <Title>Телефон:<Text>{phone}</Text></Title>
             <Title>Email:<Text>{email}</Text></Title>
             <Title>Стать:<Text>{sex}</Text></Title>
-            <Title>Дата народження:<Text>{birthDate}</Text></Title>
+            <Title>Дата народження:<Text>{getData(birthDate)}</Text></Title>
             <Title>Кількість поїздок:<Text>{name}</Text></Title>
             <Title>Загальний рейтинг:<Text>{rating} ({feedbackCount})</Text></Title>
-            <Title>Користувач з:<Text>{createdAt}</Text></Title>
+            <Title>Користувач з:<Text>{getData(createdAt)}</Text></Title>
           </div>
 
           {mode == 'driver' && <div>
