@@ -12,6 +12,7 @@ import {
   ButtonComponent,
 } from './UserInformationCategory.styled'
 import UserInformation from '../UserInformation/UserInformation';
+import TripTable from '../TripTable/TripTable';
 
 
 const UserInformationCategory = () =>  {
@@ -49,7 +50,7 @@ const UserInformationCategory = () =>  {
 
           <Panel><UserInformation/></Panel>
           <Panel>2</Panel>
-          <Panel>3</Panel>
+          <Panel><TripTable/></Panel>
           <Panel>4</Panel>
           <Panel>5</Panel>
         </Content>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {ClientsTable} from '../ClientsTable/ClientsTable'
-import { fetchUsers, fetchStatus, deleteUser, fetchSort} from '../../services/API'
+import { fetchUsers, fetchStatus, deleteUser } from '../../services/API'
 import Pagination from '../Pagination/Pagination';
 
 import {
@@ -16,27 +16,24 @@ import {
 function Users({mode}) {
   const [clientsData, setClientsData] = useState([])
   const [searchTerm, setSearchTerm] = useState('');
-  const [userLimit] = useState(15)
   const [pageCount, setpageCount] = useState(null)
+  const [sortName, setSortName] = useState('');
   const [page, setPage] = useState(1)
+
+  const userLimit = 15;
 
   const handleOnSubmit = (e) => {
     setPage(1)
     setSearchTerm(e.target.value);
-  }
+  };
 
   useEffect(() => {
-    fetchUsers(page, searchTerm, userLimit, mode, 'user')
+    fetchUsers(page, searchTerm, userLimit, mode, 'user', sortName)
       .then(data => {
         setClientsData(data)
         setpageCount(Math.ceil(clientsData.count / userLimit))
       })
-  }, [page, searchTerm])
-
-  const sortUsers = (sortType) => {
-    fetchSort(sortType, mode)
-    .then(data => setClientsData(data))
-  }
+  }, [page, searchTerm, sortName]);
 
   const nextPage = () => {
     setPage(prevPage => prevPage + 1);
@@ -97,7 +94,7 @@ function Users({mode}) {
           <ClientsTable
             clients={clientsData.rows}
             removeUser={removeUser}
-            sortUsers={sortUsers}
+            setSortName={setSortName}
             mode={mode}
           />
           : "no result("}

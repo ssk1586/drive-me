@@ -8,8 +8,9 @@ const config = {
   headers: { Authorization: `Bearer ${USER_DATA?.accessToken}` }
 };
 
-export async function fetchUsers(page = 1, searchTerm, userLimit, mode, role) {
-  const responce = await axiosConfig.get(`/users?role=${role}&mode=${mode}&page=${page}&query=${searchTerm}&limit=${userLimit}`);
+export async function fetchUsers(page = 1, searchTerm, userLimit, mode, role, sortType) {
+
+  const responce = await axiosConfig.get(`/users?sort=${sortType}&role=${role}&mode=${mode}&page=${page}&query=${searchTerm}&limit=${userLimit}`);
   return responce;
 };
 
@@ -23,11 +24,6 @@ export async function deleteUser(id) {
   config
   );
   return await responce.data
-};
-
-export async function fetchSort(sortType, mode) {
-  const responce = await axiosConfig.get(`/users?sort=${sortType}&role=user&mode=${mode}&page=1&query=&limit=15`);
-  return  responce
 };
 
 export async function fetchNewAdmin(values) {
@@ -52,5 +48,10 @@ export async function fetchSortAdmins(sortType) {
 
 export async function fetchDriverLicense(id) {
   const responce = await axiosConfig.get(`/users/${id}?images=drivingLicense,registrationCertificate`);
+  return  responce
+};
+
+export async function fetchTrips(id, sortType='type', page=1,  limit=15) {
+  const responce = await axiosConfig.get(`/trips?user=${id}&sort=${sortType}&page=${page}&limit=${limit}`);
   return  responce
 };

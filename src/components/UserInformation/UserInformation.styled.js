@@ -14,7 +14,7 @@ export const UserContainer = styled.div`
   gap: 100px;
 `;
 
-export const Text = styled.p`
+export const Text = styled.span`
   font-weight: 500;
   margin: 10px;
 `;

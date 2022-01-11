@@ -3,7 +3,7 @@ import {
     Button
 } from '../Users/User.styled'
 
-function Pagination({ clientsData, page, pageCount, prevPage, nextPage }) {
+function Pagination({ clientsData, page, pageCount=15, prevPage, nextPage }) {
 	return (
 		<div>
 			{page} - {clientsData?.rows?.length} із {clientsData.count}

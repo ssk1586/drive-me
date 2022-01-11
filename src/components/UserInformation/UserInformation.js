@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import {
   Content,
   UserContainer,
@@ -8,23 +9,26 @@ import {
   ImageContainer,
   Logo,
 } from './UserInformation.styled';
-import { useSelector } from 'react-redux'
-import { getSelectedUser } from '../../redux/slices/SelectedUserSlice/SelectedUser';
 import { getData } from '../../utils/getDate';
+import { useParams } from "react-router-dom";
+import { fetchDriverLicense, fetchTrips } from '../../services/API';
 
 export const UserInformation = () => {
 
-  const driver = useSelector(getSelectedUser);
+  const [userInfo, setUserInfo] = useState([])
+  const {id} = useParams();
 
+  useEffect(() => {
+    fetchDriverLicense(id).then(data => setUserInfo(data))
+  }, [id])
 
-  const listContent = driver.map(({ id, name, surname, email, phone, birthDate, sex, feedbackCount, rating, createdAt, vehicle, mode, pricePerKilogram, pricePerKilometer, images}) => {
-
-    return (
-      <Content key={id}>
+  const {userId, name, surname, email, phone, birthDate, sex, feedbackCount, rating, createdAt, vehicle, mode, pricePerKilogram, pricePerKilometer, images} = userInfo;
+  return (
+      <Content key={userId}>
         <UserContainer>
           <div>
             <h3>ДАНІ ПРО КОРИСТУВАЧA</h3>
-            <Logo src={images.drivingLicense[0]} alt='logo'/>
+            <Logo src={images?.drivingLicense[0]} alt='logo'/>
             <Title>П.І.Б:<Text>{name} {surname}</Text></Title>
             <Title>Телефон:<Text>{phone}</Text></Title>
             <Title>Email:<Text>{email}</Text></Title>
@@ -37,7 +41,7 @@ export const UserInformation = () => {
 
           {mode == 'driver' && <div>
             <h3>ДАНІ ПРО АВТОМОБІЛЬ</h3>
-            <Logo src={images.drivingLicense[0]} alt='logo'/>
+            <Logo src={images?.drivingLicense[0]} alt='logo'/>
             <Title>Тип транспорту:<Text>{vehicle.type}</Text></Title>
             <Title>Бренд: <Text>{vehicle.brand}</Text></Title>
             <Title>Модель: <Text>{vehicle.model}</Text></Title>
@@ -52,13 +56,13 @@ export const UserInformation = () => {
           <div>
             <h3>ФОТО ТЕХПАСПОРТУ ТА ВОДІЙСЬКИХ ПРАВ</h3>
             <ImageContainer>
-              <Img src={images.drivingLicense[0]} alt='drivingLicense' />
-              <Img src={images.drivingLicense[1]} alt='drivingLicense' />
+              {images.drivingLicense.map((item, index) => 
+                <Img key={index} src={item} alt='drivingLicense' />
+              )}
             </ImageContainer>
           </div>}
       </Content>
     );
-  });
-  return <>{listContent}</>;
+  
 };
 export default UserInformation
