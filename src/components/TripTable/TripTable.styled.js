@@ -24,3 +24,9 @@ export const Row = styled.div`
   align-items: center;
   gap: 10px;
 `;
+
+export const PaginationComponent = styled.div`
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: flex-end;
+`;

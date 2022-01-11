@@ -11,7 +11,7 @@ import {
 } from './UserInformation.styled';
 import { getData } from '../../utils/getDate';
 import { useParams } from "react-router-dom";
-import { fetchDriverLicense, fetchTrips } from '../../services/API';
+import { fetchDriverLicense } from '../../services/API';
 
 export const UserInformation = () => {
 

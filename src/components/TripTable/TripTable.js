@@ -15,6 +15,7 @@ import {
   Details,
   TripsDetails,
   Row,
+  PaginationComponent,
 } from './TripTable.styled'
 
 import Arrows from '../shared/Arrows/Arrows.js';
@@ -42,7 +43,9 @@ function TripTable() {
   }, [id, page, sortName]);
 
   const nextPage = () => {
-    setPage(prevPage => prevPage + 1);
+    if (!pageCount === 1) {
+      setPage(prevPage => prevPage + 1);
+    }
   };
 
   const prevPage = () => {
@@ -53,15 +56,17 @@ function TripTable() {
 
   return (
     <>
-      <Pagination
-        clientsData={traps}
-        page={page}
-        pageCount={pageCount}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
       {traps?.rows?.length > 0 ?
         <TripComponent>
+          <PaginationComponent>
+          <Pagination
+            clientsData={traps}
+            page={page}
+            pageCount={pageCount}
+            prevPage={prevPage}
+            nextPage={nextPage}
+            />
+            </PaginationComponent>
           <Table>
             <thead>
               <TR>

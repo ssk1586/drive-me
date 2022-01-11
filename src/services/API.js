@@ -55,3 +55,8 @@ export async function fetchTrips(id, sortType='type', page=1,  limit=15) {
   const responce = await axiosConfig.get(`/trips?user=${id}&sort=${sortType}&page=${page}&limit=${limit}`);
   return  responce
 };
+
+export async function fetchFeedbacks(id, page, limit) {
+  const responce = await axiosConfig.get(`/users/${id}/feedbacks?page=${page}&limit=${limit}`);
+  return  responce
+};

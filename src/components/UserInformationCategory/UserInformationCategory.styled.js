@@ -19,6 +19,7 @@ export const Component = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-top: 30px;
 `;
 
 export const ButtonComponent = styled.div`
@@ -26,4 +27,5 @@ export const ButtonComponent = styled.div`
   flex-direction: row;
   gap: 20px;
   justify-content: flex-end;
+  margin-bottom: 10px;
 `;

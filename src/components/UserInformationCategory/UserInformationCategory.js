@@ -13,6 +13,7 @@ import {
 } from './UserInformationCategory.styled'
 import UserInformation from '../UserInformation/UserInformation';
 import TripTable from '../TripTable/TripTable';
+import UserFeedbacks from '../UserFeedbacks/UserFeedbacks';
 
 
 const UserInformationCategory = () =>  {
@@ -49,7 +50,7 @@ const UserInformationCategory = () =>  {
           </CategoryComponent>
 
           <Panel><UserInformation/></Panel>
-          <Panel>2</Panel>
+          <Panel><UserFeedbacks/></Panel>
           <Panel><TripTable/></Panel>
           <Panel>4</Panel>
           <Panel>5</Panel>

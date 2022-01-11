@@ -6,9 +6,9 @@ import {
 function Pagination({ clientsData, page, pageCount=15, prevPage, nextPage }) {
 	return (
 		<div>
-			{page} - {clientsData?.rows?.length} із {clientsData.count}
+			{page} - {clientsData?.rows?.length || clientsData?.feedbacks?.length} із {clientsData.count || clientsData.feedbackCount}
 			<Button onClick={() => prevPage()} disabled={page == 1 ? true : false}>{'<'}</Button>
-			<Button onClick={() => nextPage()} disabled={page == pageCount ? true : false}>{'>'}</Button>
+			<Button onClick={() => nextPage()} disabled={page == pageCount || pageCount === 1 ? true : false}>{'>'}</Button>
 		</div>
 	);
 };
