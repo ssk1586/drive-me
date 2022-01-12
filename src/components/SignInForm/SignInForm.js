@@ -15,11 +15,13 @@ import {
 import hidePassword from '../../assets/images/hidepassword.png';
 import showPassword from '../../assets/images/showpassword.png';
 import { userLogin } from '../../services/userService';
+import { useTranslation } from "react-i18next";
 
 
 
 function SignInForm() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [values, setValues] = useState({email: '', pass: ''});
   const [clicked, setClick] = useState(false)  
@@ -45,7 +47,7 @@ function SignInForm() {
   return (
     <Component>
       <Logo>MAGNET</Logo>
-      <h2>Привіт</h2>
+      <h2>{t('hello')}</h2>
       <Inputs>
         <Input
           type='email'
@@ -65,10 +67,10 @@ function SignInForm() {
           />
         </InputContainer>
       </Inputs>
-      <p>Забули пароль?</p>
+      <p>{t('passForgot')}</p>
       <Button
         onClick={() => handleUserLogin()}
-      >Ввійти</Button>
+      >{t('logIn')}</Button>
     </Component>
   )
 }

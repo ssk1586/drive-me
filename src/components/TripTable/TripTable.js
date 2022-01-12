@@ -81,7 +81,9 @@ function TripTable() {
               {
                 traps?.rows.map((item, index) => {
                   const { type, dateTime, status, numberOfPassengers, price, arrival, departure, driver } = item
-            
+                  console.log(item)
+                  console.log('fdgd', departure)
+                  
                   return (
                     <TR key={index} >
                       <TD>{getData(dateTime)}</TD>

@@ -9,10 +9,13 @@ import {
 } from './UserCategory.styled'
 import Users from '../Users/Users';
 import Admins from '../Admins/Admins';
+import { useTranslation } from "react-i18next";
 
 
 
 const UserCategory = () =>  {
+
+	const { t } = useTranslation();
 
   const Tab = ({ children }) => {
 		const { onClick, isActive } = useTabState();  
@@ -23,23 +26,24 @@ const UserCategory = () =>  {
 		</Category>;
 	};
 	
-  const Panel = ({ children }) => {
-  const isActive = usePanelState();    
+	const Panel = ({ children }) => {
+  const isActive = usePanelState();  
   return isActive ? <span>{children}</span> : null;
   };
 
+
 	return (
 		<Tabs>
-			<Content>
-				<CategoryComponent>
-					{isAdmin && <div><Tab>Адміністатори</Tab></div>}
-					<TabShift><Tab>Водії</Tab></TabShift>
-					<TabShift><Tab>Клієнти</Tab></TabShift>
+			<Content >
+				<CategoryComponent >
+					{isAdmin && <div><Tab>{t('admin')}</Tab></div>}
+					<TabShift><Tab>{t('driver')}</Tab></TabShift>
+					<TabShift><Tab>{t('client')}</Tab></TabShift>
 				</CategoryComponent>
 
-				<Panel><Admins/></Panel>
-				<Panel><Users mode='driver'/></Panel>
-				<Panel><Users mode='passenger'/></Panel>
+				<Panel value={1}><Admins/></Panel>
+				<Panel value={2}><Users mode='driver'/></Panel>
+				<Panel value={3}><Users mode='passenger'/></Panel>
 			</Content>	
 		</Tabs>
 	);

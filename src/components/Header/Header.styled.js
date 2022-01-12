@@ -40,6 +40,7 @@ export const Button = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  text-decoration: underline;
 `;
 
 export const HeaderSection = styled.div`
@@ -63,4 +64,16 @@ export const AddAdminButton = styled.button`
   border: none;
   background-color: red;
   cursor: pointer;
+`;
+
+export const LanguageButton = styled.button`
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background-color: inherit;
+  color: ${(props => props.disabled ? 'gray' : 'red')};
+  cursor: pointer;
+  &:hover{
+    color: black;
+  }
 `;

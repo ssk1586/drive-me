@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setPopup } from '../../redux/slices/PopupSlice/PopupSlice'
+import { setLanguage } from '../../redux/slices/LanguageSlice/LanguageSlice'
 import { isAdmin } from '../../services/userService';
 
 import {
@@ -14,9 +15,12 @@ import {
 	HeaderSection,
 	ButtonSection,
 	AddAdminButton,
+	LanguageButton,
 } from './Header.styled'
 import Cookies from 'js-cookie';
 import { deleteCookies } from '../../services/userService';
+import { useTranslation } from "react-i18next";
+import { getLanguageValue } from '../../redux/slices/LanguageSlice/LanguageSlice'
 
 
 
@@ -25,7 +29,10 @@ function Header() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const data = JSON.parse(Cookies.get('user'))
+	const { t, i18n } = useTranslation();
 	
+	const language = useSelector(getLanguageValue)
+
 	const logOut = () => {
 		deleteCookies();
 		navigate('/signIn')
@@ -34,27 +41,40 @@ function Header() {
 	const handlePopup = () => {
 		dispatch(setPopup())
 	}
+	
+	const handleOnclick = (e) => {
+		i18n.changeLanguage(e.target.value)
+		dispatch(setLanguage(e.target.value))
+	};
 
 	return (
 		<>
 			<HeaderComponent>
 				<HeaderSection>
-				<Logo>MAGNET</Logo>
+					<Logo>MAGNET</Logo>
 					<User>
+						<div>
+							<LanguageButton value='en' disabled={language === 'en' ? true : false} onClick={handleOnclick}>
+								English
+							</LanguageButton>
+							<LanguageButton value='ua' disabled={language === 'ua' ? true : false} onClick={handleOnclick}>
+								Українська
+							</LanguageButton>
+						</div>
 						<Name>{data.user.role}</Name>
-					<Button onClick={() => logOut()}>Log out</Button>
-				</User>
+						<Button onClick={() => logOut()}>{t('logOut')}</Button>
+					</User>
 				</HeaderSection>
 
 				<ButtonSection>
 					{isAdmin && <AddAdminButton
 						onClick={() => handlePopup()}
-					>+ Додати адміна</AddAdminButton>}
+					>+ {t('addAdmin')}</AddAdminButton>}
 				</ButtonSection>
 			</HeaderComponent>
 			<Line />
-    </>
-  )
+		</>
+	);
 };
 
 export default Header;
