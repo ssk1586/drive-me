@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {ClientsTable} from '../ClientsTable/ClientsTable'
 import { fetchUsers, fetchStatus, deleteUser } from '../../services/API'
 import Pagination from '../Pagination/Pagination';
+import { useSelector, useDispatch } from 'react-redux'
+import { setDefault } from '../../redux/slices/PaginationCount/PaginationCount'
 
 import {
   Header,
@@ -18,12 +20,13 @@ function Users({mode}) {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageCount, setpageCount] = useState(null)
   const [sortName, setSortName] = useState('');
-  const [page, setPage] = useState(1)
-
+  const page = useSelector((state) => state.page.page)
   const userLimit = 15;
 
+  const dispatch = useDispatch();
+
   const handleOnSubmit = (e) => {
-    setPage(1)
+    dispatch(setDefault())
     setSearchTerm(e.target.value);
   };
 
@@ -34,16 +37,6 @@ function Users({mode}) {
         setpageCount(Math.ceil(clientsData.count / userLimit))
       })
   }, [page, searchTerm, sortName]);
-
-  const nextPage = () => {
-    setPage(prevPage => prevPage + 1);
-  };
-
-  const prevPage = () => {
-    if (page > 1) {
-      setPage(prevPage => prevPage - 1);
-    };
-  };
 
   const removeUser = (id) => {
     deleteUser(id)
@@ -81,11 +74,8 @@ function Users({mode}) {
         </InputComponent>
 
         <Pagination
-          clientsData={clientsData}
-          page={page}
+          clientsData={clientsData}         
           pageCount={pageCount}
-          prevPage={prevPage}
-          nextPage={nextPage}
         />
       </Header>
 

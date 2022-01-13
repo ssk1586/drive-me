@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { fetchFeedbacks } from '../../services/API'
 import { useParams } from "react-router-dom";
 import { getData } from '../../utils/getDate';  
@@ -29,7 +30,7 @@ const UserFeedbacks = () => {
 
   const [userFeedbacks, setFeedbacks] = useState([]);
   const { id } = useParams();
-  const [page, setPage] = useState(1)
+  const page = useSelector((state) => state.page.page)
   const [pageCount, setpageCount] = useState(null)
   const userLimit = 15;
 
@@ -44,18 +45,6 @@ const UserFeedbacks = () => {
     setpageCount(Math.ceil(userFeedbacks.feedbackCount / userLimit))
   }, [id, page]);
 
-  const nextPage = () => {
-    if (!pageCount === 1) {
-      setPage(prevPage => prevPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (page > 1) {
-      setPage(prevPage => prevPage - 1);
-    };
-  };
-
   return (
     <>
       {userFeedbacks?.feedbacks?.length > 0 ?
@@ -66,10 +55,7 @@ const UserFeedbacks = () => {
             <FeedbackCount>{userFeedbacks.feedbackCount} коментарів</FeedbackCount>
             <Pagination
               clientsData={userFeedbacks}
-              page={page}
               pageCount={pageCount}
-              prevPage={prevPage}
-              nextPage={nextPage}
             />
           </FeedbackComponent>
 

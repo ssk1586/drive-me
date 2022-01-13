@@ -60,3 +60,8 @@ export async function fetchFeedbacks(id, page, limit) {
   const responce = await axiosConfig.get(`/users/${id}/feedbacks?page=${page}&limit=${limit}`);
   return  responce
 };
+
+export async function fetchUserTransactions(id, page, sortName, limit) {
+  const responce = await axiosConfig.get(`/users/${id}/balance?page=${page}&sort=${sortName}&limit=${limit}`);
+  return  responce
+};

@@ -14,6 +14,7 @@ import {
 import UserInformation from '../UserInformation/UserInformation';
 import TripTable from '../TripTable/TripTable';
 import UserFeedbacks from '../UserFeedbacks/UserFeedbacks';
+import UserTransactions from '../UserTransactions/UserTransactions';
 
 
 const UserInformationCategory = () =>  {
@@ -46,14 +47,16 @@ const UserInformationCategory = () =>  {
             <Tab>Загальна інформація</Tab>
             <TabShift><Tab>Відгуки</Tab></TabShift>
             <TabShift><Tab>Поїздки</Tab></TabShift>
+            <TabShift><Tab>Транзакції</Tab></TabShift>
             <TabShift><Tab>Реферальна система</Tab></TabShift>
           </CategoryComponent>
 
           <Panel><UserInformation/></Panel>
           <Panel><UserFeedbacks/></Panel>
           <Panel><TripTable/></Panel>
-          <Panel>4</Panel>
+          <Panel><UserTransactions/></Panel>
           <Panel>5</Panel>
+          <Panel>6</Panel>
         </Content>
       </Tabs>
     </Component>

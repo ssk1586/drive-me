@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { fetchTrips } from '../../services/API'  
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 import {
   Table,
@@ -32,27 +33,16 @@ function TripTable() {
 
   const { id } = useParams();
   const [traps, setTraps] = useState([]);
-  const [page, setPage] = useState(1)
   const [pageCount, setpageCount] = useState(null)
   const [sortName, setSortName] = useState(null);
   const userLimit = 15;
+  const page = useSelector((state) => state.page.page)
+
   
   useEffect(() => {
     fetchTrips(id, sortName, page, userLimit).then(data => setTraps(data))
     setpageCount(Math.ceil(traps.count / userLimit))
   }, [id, page, sortName]);
-
-  const nextPage = () => {
-    if (!pageCount === 1) {
-      setPage(prevPage => prevPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (page > 1) {
-      setPage(prevPage => prevPage - 1);
-    };
-  };
 
   return (
     <>
@@ -60,11 +50,8 @@ function TripTable() {
         <TripComponent>
           <PaginationComponent>
           <Pagination
-            clientsData={traps}
-            page={page}
+            clientsData={traps}       
             pageCount={pageCount}
-            prevPage={prevPage}
-            nextPage={nextPage}
             />
             </PaginationComponent>
           <Table>
@@ -81,8 +68,6 @@ function TripTable() {
               {
                 traps?.rows.map((item, index) => {
                   const { type, dateTime, status, numberOfPassengers, price, arrival, departure, driver } = item
-                  console.log(item)
-                  console.log('fdgd', departure)
                   
                   return (
                     <TR key={index} >
