@@ -5,6 +5,7 @@ import {
 	Category,
 	TabShift,
 	Content,
+  FirstTab,
 } from '../UserCategory/UserCategory.styled'
 import {
   Button,
@@ -44,7 +45,7 @@ const UserInformationCategory = () =>  {
       <Tabs>
         <Content>
           <CategoryComponent>
-            <Tab>Загальна інформація</Tab>
+            <FirstTab><Tab>Загальна інформація</Tab></FirstTab>
             <TabShift><Tab>Відгуки</Tab></TabShift>
             <TabShift><Tab>Поїздки</Tab></TabShift>
             <TabShift><Tab>Транзакції</Tab></TabShift>

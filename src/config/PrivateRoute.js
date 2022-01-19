@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 function PrivateRoute({ children }) {
   const isUserAuth = Cookies.get('user');
 
-  return isUserAuth
+  return isUserAuth 
     ? children
     : <Navigate to="/signIn" replace />;
 }

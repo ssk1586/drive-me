@@ -2,8 +2,16 @@ import styled from 'styled-components/macro';
 
 export const ClientItem = styled.div`
   margin-bottom: 50px;
-`;
 
+  @media only screen and (max-width: 760px) {
+	table, tbody, th, td, tr { 
+		display: block; 
+	}
+  thead { 
+		display: none; 
+	}
+}
+`;
 
 export const Table = styled.table`
   width: 100%;
@@ -16,12 +24,14 @@ export const Table = styled.table`
 `;
 
 export const TR = styled.tr`
+
 `;
 
 export const TH = styled.th`
   padding: 10px;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+
   &:last-child {
     border-right: 0;
   }
@@ -34,6 +44,7 @@ export const TD = styled.td`
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   cursor: pointer;
+
   &:last-child {
     border-right: 0;
   }  

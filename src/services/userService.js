@@ -15,6 +15,12 @@ export const isAdmin = () => {
   return isAdminRole;
 };
 
+export const getCookies = () => {
+  if (Cookies.get('user')){
+    return true
+  }
+};
+
 export const deleteCookies = () => {
   Cookies.remove('user');
   Cookies.remove('accessToken');

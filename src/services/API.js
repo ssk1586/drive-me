@@ -65,3 +65,31 @@ export async function fetchUserTransactions(id, page, sortName, limit) {
   const responce = await axiosConfig.get(`/users/${id}/balance?page=${page}&sort=${sortName}&limit=${limit}`);
   return  responce
 };
+
+export async function fetchPolicy(name) {
+  const responce = await axiosConfig.get(`/legaltexts/${name}`);
+  return  responce
+};
+
+export async function fetchNewPolicy(values, name) {
+  const responce = await axios.put(`${process.env.REACT_APP_BASE_URL}/legaltexts/${name}`,
+  {
+    imageUri: "test put", text: values 
+  },
+  config,
+  );
+  return await responce.data
+};
+
+export async function fetchPrice(values) {
+  const responce = await axios.put(`${process.env.REACT_APP_BASE_URL}/price`,
+  {
+    delivery: { min: values.delivery.min, max: values.delivery.max},
+    distance: { min: values.distance.min, max: values.distance.max },
+    time: { min: values.time.min, max: values.time.max}
+  },
+  config,
+  );
+  return await responce.data
+};
+

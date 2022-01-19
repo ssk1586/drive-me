@@ -35,9 +35,9 @@ function SignInForm() {
       Cookies.set('user', JSON.stringify(data))
       Cookies.set('accessToken', data.accessToken)
       Cookies.set('refreshToken', data.refreshToken)
-      navigate('/')
+      window.location.href = '/';
     });     
-    }, [values, navigate])
+    }, [values])
 
   const onChange = (e) => {
     const { name, value } = e.target;

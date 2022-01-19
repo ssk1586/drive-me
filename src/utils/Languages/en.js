@@ -7,4 +7,8 @@ export const TRANSLATIONS_EN = {
   admin: 'Admin',
   driver: 'Driver',
   client: 'Client',
+  user: 'Users',
+  setting: 'Settings',
+  financeReq: 'Financial requests',
+  reverse: 'Reverse'
 };

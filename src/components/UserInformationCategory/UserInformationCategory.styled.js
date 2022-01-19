@@ -28,4 +28,10 @@ export const ButtonComponent = styled.div`
   gap: 20px;
   justify-content: flex-end;
   margin-bottom: 10px;
+
+  @media (max-width: 470px){
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;

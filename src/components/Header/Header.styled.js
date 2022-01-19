@@ -3,13 +3,21 @@ import styled from 'styled-components/macro';
 export const HeaderComponent = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0px 50px 0px 0px;
+  width: 100%;
+
+  @media (max-width: 470px){
+    padding: 0px;
+  }
 `;
 
 export const Logo = styled.h1`
   color: #e94746;
   font-size: 26px;
   font-weight: bold;
+
+  @media (max-width: 470px){
+    font-size: 18px;
+  }
 `;
 
 export const User = styled.h4`
@@ -17,6 +25,10 @@ export const User = styled.h4`
   flex-direction: row;
   align-items: center;
   gap: 50px;
+
+  @media (max-width: 470px){
+    gap: 20px;
+  }
 `;
 
 export const Status = styled.div`
@@ -27,6 +39,10 @@ export const Name = styled.div`
   color: gray;
   text-decoration: underline;
   cursor: pointer;
+  
+  @media (max-width: 470px){
+    font-size: 12px;
+  }
 `;
 
 export const Line = styled.hr`
@@ -41,6 +57,10 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   text-decoration: underline;
+
+  @media (max-width: 470px){
+    font-size: 12px;
+  }
 `;
 
 export const HeaderSection = styled.div`
@@ -55,6 +75,7 @@ export const ButtonSection = styled.div`
   display: flex;
   justify-content: end;
   margin-bottom: 20px;
+
 `;
 
 export const AddAdminButton = styled.button`
@@ -64,6 +85,12 @@ export const AddAdminButton = styled.button`
   border: none;
   background-color: red;
   cursor: pointer;
+
+  @media (max-width: 470px){
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
 `;
 
 export const LanguageButton = styled.button`
@@ -73,7 +100,17 @@ export const LanguageButton = styled.button`
   background-color: inherit;
   color: ${(props => props.disabled ? 'gray' : 'red')};
   cursor: pointer;
+
   &:hover{
     color: black;
+  }
+  @media (max-width: 470px){
+    font-size: 12px;
+  }
+`;
+
+export const LanguageComponent = styled.div`
+  @media (max-width: 470px){
+    flex-direction: column;
   }
 `;

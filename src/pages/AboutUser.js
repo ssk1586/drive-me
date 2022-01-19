@@ -1,19 +1,15 @@
 import React from 'react'
-import AddAdminPopUp from '../components/shared/AddAdminPopUp/AddAdminPopUp';
 import SideBarMenu from '../components/SideBarMenu/SideBarMenu';
-import Header from '../components/Header/Header';
 import UserInformationCategory from '../components/UserInformationCategory/UserInformationCategory';
-import { Content } from '../components/UserInformationCategory/UserInformationCategory.styled';
+import { MenuComponent } from '../components/SideBarMenu/SideBarMenu.styled';
 
 function AboutUser() {
 	return (
 		<>
-			<AddAdminPopUp/>
-			<Header />
-			<Content>
+			<MenuComponent>
 				<SideBarMenu />
 				<UserInformationCategory/>
-			</Content>
+			</MenuComponent>
 		</>
 	);
 }

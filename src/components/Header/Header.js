@@ -16,6 +16,7 @@ import {
 	ButtonSection,
 	AddAdminButton,
 	LanguageButton,
+	LanguageComponent,
 } from './Header.styled'
 import Cookies from 'js-cookie';
 import { deleteCookies } from '../../services/userService';
@@ -26,7 +27,6 @@ import { getLanguageValue } from '../../redux/slices/LanguageSlice/LanguageSlice
 
 function Header() {
 
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const data = JSON.parse(Cookies.get('user'))
 	const { t, i18n } = useTranslation();
@@ -35,7 +35,7 @@ function Header() {
 
 	const logOut = () => {
 		deleteCookies();
-		navigate('/signIn')
+		window.location.href = '/signIn';
 	};
 
 	const handlePopup = () => {
@@ -50,19 +50,21 @@ function Header() {
 	return (
 		<>
 			<HeaderComponent>
+				
 				<HeaderSection>
 					<Logo>MAGNET</Logo>
 					<User>
-						<div>
+						<LanguageComponent>
 							<LanguageButton value='en' disabled={language === 'en' ? true : false} onClick={handleOnclick}>
 								English
 							</LanguageButton>
 							<LanguageButton value='ua' disabled={language === 'ua' ? true : false} onClick={handleOnclick}>
 								Українська
 							</LanguageButton>
-						</div>
+						</LanguageComponent>
+
 						<Name>{data.user.role}</Name>
-						<Button onClick={() => logOut()}>{t('logOut')}</Button>
+							<Button onClick={() => logOut()}>{t('logOut')}</Button>
 					</User>
 				</HeaderSection>
 

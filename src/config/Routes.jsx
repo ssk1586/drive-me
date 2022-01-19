@@ -11,6 +11,7 @@ import AboutUser from '../pages/AboutUser';
 import SignIn from '../pages/SignIn';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute'; 
+import Settings from '../pages/Settings';
 
 
 function Routes() {
@@ -39,6 +40,14 @@ function Routes() {
             element={
               <PrivateRoute>
                 <AboutUser/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <PrivateRoute>
+                <Settings/>
               </PrivateRoute>
             }
           />

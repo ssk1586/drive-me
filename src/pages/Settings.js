@@ -1,17 +1,18 @@
 import React from 'react'
 import SideBarMenu from '../components/SideBarMenu/SideBarMenu';
 import { MenuComponent } from '../components/SideBarMenu/SideBarMenu.styled';
-import UserCategory from '../components/UserCategory/UserCategory';
+import SettingsComponent from '../components/SettingsComponent/SettingsComponent';
 
-function Home() {
+
+const Settings = () => {
   return (
     <>
       <MenuComponent>
         <SideBarMenu />
-        <UserCategory />
+        <SettingsComponent/>
       </MenuComponent>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Settings

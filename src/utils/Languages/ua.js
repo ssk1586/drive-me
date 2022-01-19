@@ -7,4 +7,8 @@ export const TRANSLATIONS_UA = {
   admin: 'Адміністатори',
   driver: 'Водії',
   client: 'Клієнти',
+  user: 'Користувачі',
+  setting: 'Налаштування',
+  financeReq: 'Фінансові запити',
+  reverse: 'Зворотній'
  };

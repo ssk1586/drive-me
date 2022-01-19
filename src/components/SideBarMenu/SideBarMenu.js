@@ -1,17 +1,17 @@
 import React from 'react'
 import {
   MenuItems,
-  MenuComponent,
-  Content,
   SideBarButton,
   LinkTab,
 } from './SideBarMenu.styled.js';
 
 import { Tabs, useTabState, usePanelState } from "@bumaga/tabs";
-import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 const SideBarMenu = () => {
-  
+
+  const { t } = useTranslation();
+
   const Tab = ({ children }) => {
 		const { onClick, isActive } = useTabState();  
 		return <SideBarButton
@@ -27,21 +27,21 @@ const SideBarMenu = () => {
   };
 
   return (
-    <Tabs>
-      {/* <MenuComponent> */}
-      <MenuItems>
-        <Tab><LinkTab to='/'>Користувачі</LinkTab></Tab>
-        <Tab><LinkTab to='/'>Зворотній</LinkTab></Tab>
-        <Tab><LinkTab to='/'>Фінансові запити</LinkTab></Tab>
-        <Tab><LinkTab to='/'>Налаштування</LinkTab></Tab>
-      </MenuItems>
+    <>
+      <Tabs>
+        <MenuItems>
+          <Tab><LinkTab to='/'>{t('user')}</LinkTab></Tab>
+          <Tab><LinkTab to='/'>{t('reverse')}</LinkTab></Tab>
+          <Tab><LinkTab to='/'>{t('financeReq')}</LinkTab></Tab>
+          <Tab><LinkTab to='/settings'>{t('setting')}</LinkTab></Tab>
+        </MenuItems>
       
-      <Panel></Panel>
-      <Panel></Panel>
-      <Panel></Panel>
-      <Panel></Panel>
-      {/* </MenuComponent>	 */}
-    </Tabs>
+        <Panel></Panel>
+        <Panel></Panel>
+        <Panel></Panel>
+        <Panel></Panel>
+      </Tabs>
+    </>
   );
 };
 

@@ -5,10 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0px 0px 0px 50px;
+  /* padding: 0px 0px 0px 50px; */
+
 }
+
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.res-fs-14 {
+  font-size: 14px;
+}
+
+@media (max-width:768px){
+  .res-fs-14 {
+    font-size: 10px;
+  }
 }

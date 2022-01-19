@@ -1,7 +1,25 @@
 import styled from "styled-components/macro";
 
 export const TripComponent = styled.div`
-  margin: 30px 0px;
+  margin: 30px 10px;
+  @media only screen and (max-width: 760px) {
+	table, tbody, th, td, tr { 
+		display: block; 
+    &:last-child {
+    border-right: 0;
+  }
+	}
+  thead { 
+		display: none; 
+	}
+}
+@media only screen and (max-width: 760px) {
+  td { 
+    &:last-child {
+    border-right: 0;
+  }
+}
+}
 `;
 
 export const Details = styled.div`

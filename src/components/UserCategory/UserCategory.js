@@ -6,6 +6,8 @@ import {
 	Category,
 	TabShift,
 	Content,
+	FirstTab,
+	Tables,
 } from './UserCategory.styled'
 import Users from '../Users/Users';
 import Admins from '../Admins/Admins';
@@ -33,19 +35,22 @@ const UserCategory = () =>  {
 
 
 	return (
-		<Tabs>
-			<Content >
+		<Content >
+			<Tabs>
+			
 				<CategoryComponent >
-					{isAdmin && <div><Tab>{t('admin')}</Tab></div>}
+					<FirstTab>{isAdmin && <div><Tab>{t('admin')}</Tab></div>}</FirstTab>
 					<TabShift><Tab>{t('driver')}</Tab></TabShift>
 					<TabShift><Tab>{t('client')}</Tab></TabShift>
 				</CategoryComponent>
 
-				<Panel value={1}><Admins/></Panel>
-				<Panel value={2}><Users mode='driver'/></Panel>
-				<Panel value={3}><Users mode='passenger'/></Panel>
-			</Content>	
-		</Tabs>
+				<Tables>
+				<Panel value={1}><Admins /></Panel>
+				<Panel value={2}><Users mode='driver' /></Panel>
+				<Panel value={3}><Users mode='passenger' /></Panel>
+				</Tables>
+			</Tabs>
+		</Content>
 	);
 };
 

@@ -6,11 +6,13 @@ import { store } from './redux/store/store'
 import { Provider } from 'react-redux'
 import "./utils/Translations";
 
+
 ReactDOM.render(
+
   <Provider store={store}>
     <React.StrictMode>
       <App />
-    </React.StrictMode>
-  </Provider>,
+      </React.StrictMode>
+    </Provider>,
   document.getElementById('root')
 );

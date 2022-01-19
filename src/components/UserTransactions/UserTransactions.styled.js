@@ -6,6 +6,10 @@ export const Amount = styled.p`
 
 export const TransactionsComponent = styled.div`
   margin-bottom: 30px;
+
+  @media (max-width: 470px){
+    margin: 0px 10px 30px 10px;
+  }
 `;
 
 export const PaginationComponent = styled.div`

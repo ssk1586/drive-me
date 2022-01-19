@@ -8,6 +8,7 @@ import {
   Img,
   ImageContainer,
   Logo,
+  TopicTitle,
 } from './UserInformation.styled';
 import { getData } from '../../utils/getDate';
 import { useParams } from "react-router-dom";
@@ -27,7 +28,7 @@ export const UserInformation = () => {
       <Content key={userId}>
         <UserContainer>
           <div>
-            <h3>ДАНІ ПРО КОРИСТУВАЧA</h3>
+            <TopicTitle>ДАНІ ПРО КОРИСТУВАЧA</TopicTitle>
             <Logo src={images?.drivingLicense[0]} alt='logo'/>
             <Title>П.І.Б:<Text>{name} {surname}</Text></Title>
             <Title>Телефон:<Text>{phone}</Text></Title>
@@ -40,7 +41,7 @@ export const UserInformation = () => {
           </div>
 
           {mode == 'driver' && <div>
-            <h3>ДАНІ ПРО АВТОМОБІЛЬ</h3>
+            <TopicTitle>ДАНІ ПРО АВТОМОБІЛЬ</TopicTitle>
             <Logo src={images?.drivingLicense[0]} alt='logo'/>
             <Title>Тип транспорту:<Text>{vehicle.type}</Text></Title>
             <Title>Бренд: <Text>{vehicle.brand}</Text></Title>
@@ -54,7 +55,7 @@ export const UserInformation = () => {
 
         {mode == 'driver' &&
           <div>
-            <h3>ФОТО ТЕХПАСПОРТУ ТА ВОДІЙСЬКИХ ПРАВ</h3>
+            <TopicTitle>ФОТО ТЕХПАСПОРТУ ТА ВОДІЙСЬКИХ ПРАВ</TopicTitle>
             <ImageContainer>
               {images.drivingLicense.map((item, index) => 
                 <Img key={index} src={item} alt='drivingLicense' />
