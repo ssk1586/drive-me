@@ -15,7 +15,6 @@ import { fetchNewPolicy } from '../../services/API';
 
 const EditorComponent = ({ data, name }) => {
   
-  console.log(data)
   const blocksFromHtml = htmlToDraft(data);
   const { contentBlocks, entityMap } = blocksFromHtml;
 

@@ -50,8 +50,8 @@ export const Content = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	margin-right: 50px;
+	/* align-items: center; */
+	/* margin-right: 50px; */
 
 	@media (max-width:470px){
 		margin: 0;

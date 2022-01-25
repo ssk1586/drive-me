@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
 export const MenuItems = styled.div`
   font-weight: 500;
   border-right: 2px solid red;
   display: flex;
+  gap: 10px;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
@@ -17,6 +18,7 @@ export const MenuItems = styled.div`
     flex-direction: row;
     align-items: center;
     border-bottom: 2px solid red;
+    gap: 10px;
   }
 `;
 
@@ -38,14 +40,21 @@ export const Content = styled.div`
   width: 100%;
 `;
 
-export const LinkTab = styled(Link)`
-  color: inherit;
+export const LinkTab = styled(NavLink)`
+  /* color: ${p => p.style}; */
   text-decoration: none;
+  padding: 10px 20px;
+
+  &:hover {
+    color: red;
+  }
 
   @media (max-width: 480px){
     font-size: 14px;
+    padding: 10px 5px;
   }
 `;
+
 
 export const SideBarButton = styled.button`
   border: none;

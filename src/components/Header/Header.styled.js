@@ -5,9 +5,6 @@ export const HeaderComponent = styled.div`
   flex-direction: column;
   width: 100%;
 
-  @media (max-width: 470px){
-    padding: 0px;
-  }
 `;
 
 export const Logo = styled.h1`
@@ -69,12 +66,14 @@ export const HeaderSection = styled.div`
   justify-content: space-between;
   align-items: center;
   max-height: 80px;
+  padding: 0px 10px;
 `;
 
 export const ButtonSection = styled.div`
   display: flex;
   justify-content: end;
   margin-bottom: 20px;
+  padding: 0px 10px;
 
 `;
 

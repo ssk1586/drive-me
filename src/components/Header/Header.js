@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { setPopup } from '../../redux/slices/PopupSlice/PopupSlice'
 import { setLanguage } from '../../redux/slices/LanguageSlice/LanguageSlice'

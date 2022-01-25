@@ -28,6 +28,7 @@ function Routes() {
             }
           />
           <Route
+            
             path="/"
             element={
               <PrivateRoute>
